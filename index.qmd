@@ -1,6 +1,6 @@
 --- 
 title: "実証分析入門"
-author: "長田悠生 (学籍番号: 202310330)"
+author: "長田悠生"
 date: 2023/12/14
 format:
     dashboard:
