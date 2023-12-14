@@ -1,0 +1,80 @@
+--- 
+title: "実証分析入門"
+author: "長田悠生 (学籍番号: 202310330)"
+date: 2023/12/14
+format:
+    dashboard:
+        orientation: columns
+        website:
+        nav-buttons:
+        - reddit
+        - icon: github
+          href: https://gitlab.com/
+--- 
+
+```{r}
+library(wooldridge)
+library(modelsummary)
+library(estimatr)
+library(gt)
+```
+
+# Top
+
+## Column {width=50%}
+
+```{r}
+#| title: 調査対象のデータ (wooldridge packageの wage1)
+
+educ <- wage1$educ
+profocc <- wage1$profocc
+clerocc <- wage1$clerocc
+servocc <- wage1$servocc
+
+edited_wage1 <- data.frame(
+    educ, profocc, clerocc, servocc
+)
+
+edited_wage1 |>
+    gt() |>
+        tab_header(title = "wooldridge", subtitle = "edited_wage1")
+```
+
+## Column {.tabset}
+
+```{r}
+#| title: 重回帰分析の結果
+
+ex1_list <- list(
+    "重回帰分析" = lm(educ ~ profocc + clerocc + servocc, data <- wage1)
+)
+
+msummary(
+    ex1_list,
+    stars=TRUE,
+    gof_omit = "R2|R2 Adj.|AIC|BIC|Log.Lik.|RMSE",
+    fmt="%.4f"
+)
+```
+
+```{r}
+#| title: 標準誤差と頑健標準誤差
+
+ex2_list <- list(
+    "Default" = lm(educ ~ profocc + clerocc + servocc, data <- wage1),
+    "Robust" = lm_robust(educ ~ profocc + clerocc + servocc, data <- wage1, se_type = "stata")
+)
+
+msummary(
+    ex2_list,
+    stars=TRUE,
+    gof_omit = "R2|R2 Adj.|AIC|BIC|Log.Lik.|RMSE",
+    fmt="%.4f"
+)
+```
+
+# Interpretation {orientation="columns" scrolling="true"}
+
+:::{.card}
+
+:::
