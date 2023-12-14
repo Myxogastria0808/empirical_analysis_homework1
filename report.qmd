@@ -4,12 +4,13 @@ author: "長田悠生 (学籍番号: 202310330)"
 date: 2023/12/14
 format:
     dashboard:
-        orientation: columns
+        theme: yeti
+        orientation: rows
+        logo: images/hello.jpg
         website:
         nav-buttons:
-        - reddit
         - icon: github
-          href: https://gitlab.com/
+          href: https://github.com/Myxogastria0808/empirical_analysis_homework1
 --- 
 
 ```{r}
@@ -19,12 +20,21 @@ library(estimatr)
 library(gt)
 ```
 
-# Top
+# Main
 
-## Column {width=50%}
+## Row {width=100%}
 
 ```{r}
-#| title: 調査対象のデータ (wooldridge packageの wage1)
+#| title: 元データ (wooldridge packageの wage1)
+knitr::kable(wage1)
+```
+
+## Row {width=100%}
+
+### Column {width=50%}
+
+```{r}
+#| title: 調査対象のデータ (wooldridge packageの wage1の一部)
 
 educ <- wage1$educ
 profocc <- wage1$profocc
@@ -40,7 +50,7 @@ edited_wage1 |>
         tab_header(title = "wooldridge", subtitle = "edited_wage1")
 ```
 
-## Column {.tabset}
+### Column {.tabset}
 
 ```{r}
 #| title: 重回帰分析の結果
@@ -75,6 +85,12 @@ msummary(
 
 # Interpretation {orientation="columns" scrolling="true"}
 
-:::{.card}
 
+::: {.card}
+
+# それぞれの推定結果の解釈
+
+※ 以下の解釈は、統計を学習し始めた、学生の書いたものであるので、間違っている可能性があります。ご了承ください。
+
+`(Intercept)`と`profocc`と`clerocc`について、優位性を表すデータ内の `*`の数は、p < 0.001を示す個数分ついているので、推定値は統計的に有意であることがわかった。
 :::
