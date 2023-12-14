@@ -93,4 +93,11 @@ msummary(
 ※ 以下の解釈は、統計を学習し始めた、学生の書いたものであるので、間違っている可能性があります。ご了承ください。
 
 `(Intercept)`と`profocc`と`clerocc`について、優位性を表すデータ内の `*`の数は、p < 0.001を示す個数分ついているので、推定値は統計的に有意であることがわかった。
+
+
+参考文献
+
+<https://qiita.com/saka212/items/8c74854171775e5d5273>
+
+<https://qiita.com/mendako/items/ed78321bacd04ff4511c>
 :::
